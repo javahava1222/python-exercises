@@ -128,6 +128,10 @@ while number not in range(1,11):
 for i in range(1,11):
     print(number, 'x', i, '=', number * i) 
 
+#alternate solution
+user_number = input('Please input number')
+
+
 # 7 x 1 = 7
 # 7 x 2 = 14
 # 7 x 3 = 21

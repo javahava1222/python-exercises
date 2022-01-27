@@ -67,14 +67,14 @@ apply_discount(10, 0.15)
 def handle_commas(str):
     new_str = []
     for i in str:
-        if i == ',':
+        if i == ',' or i == '$':
             continue
         else:
             new_str.append(i)
-    num_wo_commas = int(''.join(new_str))
-    print(num_wo_commas)
+    num_wo_commas = float(''.join(new_str))
+    return (num_wo_commas)
         
-handle_commas('1,000,000')
+handle_commas('1,000,000.01')
 
 
 # Define a function named get_letter_grade. 
@@ -163,10 +163,7 @@ cumulative_sum([1, 2, 3, 4])
 # Create a function named twelveto24. It should accept a string 
 # in the format 10:45am or 4:30pm and return a string 
 # that is the representation of the time in a 24-hour format.
-def twelveto24(str):
-    strftime
 
-strftime()
 
 #  Bonus write a function that does the opposite.
 # Create a function named col_index. It should accept a spreadsheet column name, 

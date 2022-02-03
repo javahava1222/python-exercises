@@ -26,7 +26,7 @@ print (total_pay)
 # and the class schedule does not conflict with her current schedule.
 class_room_available = True
 schedule_is_available = False
-enrollment = class_room_available AND schedule_is_available
+enrollment = class_room_available & schedule_is_available
 print (f'Can student enrolle in the class? \n {enrollment}')
 
 # A product offer can be applied only if people buys more than 2 items, and the offer has not expired. 
@@ -35,7 +35,6 @@ is_premium_member = True
 purchase_more_than_two = False
 offer_not_expired = True
 discount_valid = offer_not_expired and (is_premium_member or purchase_more_than_two)
-
 
 # Continue working in your data_types_and_variables.py file. 
 # Use the following code to follow the instructions below:
@@ -52,4 +51,4 @@ username_meet_length_req = len(username) <= 20
 password_not_equal_to_password = username != password
 # bonus neither the username or password can start or end with whitespace
 username_has_spaces = username != username.strip()
-username_has_spaces = password != password.strip()
+password_has_spaces = password != password.strip()

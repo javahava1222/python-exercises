@@ -128,9 +128,6 @@ while number not in range(1,11):
 for i in range(1,11):
     print(number, 'x', i, '=', number * i) 
 
-#alternate solution
-user_number = input('Please input number')
-
 
 # 7 x 1 = 7
 # 7 x 2 = 14
@@ -177,6 +174,22 @@ while (odd_num not in range(1,51,2)):
         else:
             print(f'Yikes! Skipping number: {odd_num}')
 
+#Using break below
+
+while True:
+    input_num = input('Select an odd number between 1 and 50')
+    if input_num.isdigit():
+        if int(input_num) % 2 == 1 and int(input_num) <= 50:
+            break
+
+input_num = int(input_num)
+
+for num in range(1, 50, 2):
+    if num == input_num:
+        print('Yikes! skipping number: ', num)
+    else:
+        print('Here is an odd number: ', num)
+
 
 
 # Your output should look like this:
@@ -216,10 +229,19 @@ while (odd_num not in range(1,51,2)):
 
 x = int(input('Please input postive number'))
 while x < 0:
-    x = input('Please write positive number')
+    x = int(input('Please write positive number'))
 for num in range(0,x+1):
     print(num)
     
+#alternate solution 
+while True:
+    input_num = input('Please write a positive number: ')
+    if input_num.isdigit():
+        if int(input_num) > 0:
+            break
+input_num = int(input_num)
+for num in range(0, input_num + 1):
+    print(num)
 
 # (Hints: first make sure that the value the user entered is a valid number, 
 # also note that the input function returns a string, so you'll need to convert this to a numeric type.)
@@ -228,8 +250,8 @@ for num in range(0,x+1):
 #  Next write a loop that prints out the numbers from the number the user entered down to 1.
 x = int(input('Please input postive number'))
 while x < 0:
-    x = input('Please write positive number')
-for num in range(0,x+1):
+    x = int(input('Please write positive number'))
+for num in range(x, 0, -1):
     print(num)
 
 
@@ -243,6 +265,17 @@ for num in range(0,x+1):
 # For multiples of three print "Fizz" instead of the number
 # For the multiples of five print "Buzz".
 # For numbers which are multiples of both three and five print "FizzBuzz".
+for num in range(1,101):
+    if num % 3 == 0 and num % 5 == 0:
+        print('fizzbuzz')
+    elif num % 3 == 0:
+        print('fizz')
+    elif num % 5 == 0:
+        print('buzz')
+    else:
+        print(num)
+
+
 # Display a table of powers.
 
 # Prompt the user to enter an integer.
@@ -250,6 +283,23 @@ for num in range(0,x+1):
 # Ask if the user wants to continue.
 # Assume that the user will enter valid data.
 # Only continue if the user agrees to.
+while True:
+    input_num = input('Please enter a positive integer: ')
+    if input_num.isdigit():
+        if int(input_num) > 0:
+            break
+continue_process = input('Do you want to continue producing a table of powers? : enter "y" or "n"')
+if continue_process.lower().startswith('y'):
+    input_num = int(input_num)
+    print()
+    print('number | squared | cubed')
+    print('------ | ------- | -----')
+    for i in range(1, input_num + 1):
+        i_squared = i ** 2
+        i_cubed = i ** 3
+        print(f'{i: <6} | {i_squared: ^7} | {i_cubed: 5}')
+
+
 # Example Output
 
 
@@ -275,14 +325,61 @@ for num in range(0,x+1):
 # The application should only continue if the user agrees to.
 # Grade Ranges:
 
+while True:
+    input_num = int(input('Please enter numerical grade from 0 to 100: '))
+    if input_num > 0 and input_num <= 100:
+        break
+if input_num >= 88:
+    print('A')
+elif input_num >= 80 and input_num <=87:
+    print('B')
+elif input_num >= 67 and input_num <= 79:
+    print('C')
+elif input_num >= 60 and input_num <=66:
+    print('D')
+else: 
+    print('F')
+
 # A : 100 - 88
 # B : 87 - 80
 # C : 79 - 67
 # D : 66 - 60
 # F : 59 - 0
 # Bonus
-
 # Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
-# Create a list of dictionaries where each dictionary represents a book that you have read. Each dictionary in the list should have the keys title, author, and genre. Loop through the list and print out information about each book.
 
-# Prompt the user to enter a genre, then loop through your books list and print out the titles of all the books in that genre.
+
+# Create a list of dictionaries where each dictionary represents a book that you have read. 
+# Each dictionary in the list should have the keys title, author, and genre. 
+# Loop through the list and print out information about each book.
+bookshelf = [
+    {'title': 'The Great Gatsby',
+    'author': 'F. Scott Fitzgerald',
+    'genre': 'Tragedy'},
+    {'title': 'Brave New World',
+    'author': 'Aldous Huxley',
+    'genre': 'Science fiction'},
+    {'title': 'Hamlet',
+    'author': 'William Shakespeare',
+    'genre': 'Tragedy'},
+    {'title': 'The Catcher in the Rye',
+    'author': 'J.D. Salinger',
+    'genre': 'Novel'},
+]
+
+for book in bookshelf:
+    [print(key, ': ', book[key]) for key in book]
+    print('------')
+# Prompt the user to enter a genre, then loop through your books list 
+# # and print out the titles of all the books in that genre.
+
+user_input = input('Please enter a genre to find a book: ')
+matches = []
+for book in bookshelf:
+    if book['genre'].lower() == user_input.lower():
+        matches.append(book['title'])
+if matches == []:
+    print('no books available for your choice of genre')
+else:
+    print(f'The book titles of the genre - {user_input} - is shown below')
+    [print(match) for match in matches]
